@@ -7,8 +7,8 @@ import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
 public class AsyncGuiClient extends JFrame {
-    private JTextArea chatArea;
-    private JTextField inputField;
+    private final JTextArea chatArea;
+    private final JTextField inputField;
     private PrintWriter out;
     private Socket socket;
 
