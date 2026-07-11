@@ -22,6 +22,8 @@ public class AsyncGuiClient extends JFrame {
         chatArea = new JTextArea();
         chatArea.setEditable(false);
         inputField = new JTextField();
+        inputField.setBackground(Color.WHITE);
+        inputField.setForeground(Color.BLACK);
         JButton sendButton = new JButton("Отправить");
 
         // Обработчик кнопки "Отправить" (Работает в GUI-потоке)
@@ -81,6 +83,13 @@ public class AsyncGuiClient extends JFrame {
     }
 
     public static void main(String[] args) {
+        // GTK L&F на Linux игнорирует setBackground/setForeground у JTextField,
+        // поэтому явно ставим кроссплатформенный Metal L&F, где цвета применяются как заданы
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (Exception ignored) {
+        }
+
         // Запускаем GUI в правильном потоке Swing
         SwingUtilities.invokeLater(() -> {
             new AsyncGuiClient().setVisible(true);
