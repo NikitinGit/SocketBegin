@@ -43,6 +43,8 @@ public class TomcatLikeServer {
                 namedThreadFactory
         );
 
+        System.out.println("requestPool.prestartAllCoreThreads(); " + requestPool.prestartAllCoreThreads());
+
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.printf("[TOMCAT-LIKE] Слушаю порт %d (core=%d, max=%d, queue=%d)%n",
                     PORT, CORE_POOL_SIZE, MAX_POOL_SIZE, QUEUE_CAPACITY);
